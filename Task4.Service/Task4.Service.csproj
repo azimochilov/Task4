@@ -9,10 +9,17 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="DTOs\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
     <Folder Include="Mappers\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Task4.Domain\Task4.Domain.csproj" />
   </ItemGroup>
 
 </Project>
