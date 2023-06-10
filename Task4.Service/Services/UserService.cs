@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Task4.Data.IRepositories;
 using Task4.Domain.Entities;
 using Task4.Domain.Enums;
@@ -73,5 +74,12 @@ public class UserService : IUserService
 
         await repository.SaveAsync();
         return mapped;
+    }
+
+    public async Task<IEnumerable<UserForResultDto>> GetAllAsync()
+    {
+        var users = await repository.SelectAll().OrderBy(u => u.Id).ToListAsync();
+
+        return mapper.Map<IEnumerable<UserForResultDto>>(users);
     }
 }
