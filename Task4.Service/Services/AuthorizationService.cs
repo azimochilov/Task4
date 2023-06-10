@@ -46,8 +46,7 @@ public class AuthorizationService : IAuthorizationService
         var claims = claimsPrincipal.Claims;
 
         var userId = long.Parse(claims.FirstOrDefault(c => c.Type == "Id")?.Value);
-        var userPassword = claims.FirstOrDefault(c => c.Type == "Password")?.Value;
-
+        
         var result = await this.repository.SelectAsync(u => u.Id == userId && u.Type == Status.Active);
         bool temp = false;
         if (result is not null)
