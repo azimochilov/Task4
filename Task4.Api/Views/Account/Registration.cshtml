@@ -1,0 +1,75 @@
+﻿@model Task4.Service.DTOs.UserCreationDto
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 75px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .login-container h2 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 3px;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 3px;
+        }
+
+            .btn-login:hover {
+                background-color: #0069d9;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <h2>Create an Account</h2>
+
+            <form asp-action="Register" asp-controller="Account" method="post">
+                <div class="form-group">
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Name" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="email" asp-for="Email" class="form-control" placeholder="Email" required />
+                </div>                
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-login btn-block" style="background-color: hsl(0, 0%, 20%); color: white;">Login</button>
+                </div>
+            </form>
+
+            <p class="text-center">Already have an account? <a href="/Account/Login">Log in</a></p>
+        </div>
+    </div>
+</body>
+</html>
