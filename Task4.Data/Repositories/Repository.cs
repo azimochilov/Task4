@@ -40,23 +40,14 @@ public class Repository<T> : IRepository<T> where T : Auditable
         await dbContext.SaveChangesAsync();
     }
 
-    public IQueryable<T> SelectAll(Expression<Func<T, bool>> expression = null, string[] includes = null)
+    public IQueryable<T> SelectAll(Expression<Func<T, bool>> expression = null)
     {
         IQueryable<T> query = expression is null ? this.dbSet : this.dbSet.Where(expression);
-
-        if (includes is not null)
-        {
-            foreach (string include in includes)
-            {
-                query = query.Include(include);
-            }
-        }
-
         return query;
     }
 
-    public async ValueTask<T> SelectAsync(Expression<Func<T, bool>> expression, string[] includes = null)
-           => await this.SelectAll(expression, includes).FirstOrDefaultAsync(t => !t.IsDeleted);
+    public async ValueTask<T> SelectAsync(Expression<Func<T, bool>> expression)
+           => await this.SelectAll(expression).FirstOrDefaultAsync(t => !t.IsDeleted);
 
     public T Update(T entity)
     {
