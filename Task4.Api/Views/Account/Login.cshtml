@@ -41,6 +41,7 @@
             background-color: #007bff;
             color: #ffffff;
             border-radius: 3px;
+            width: 100%;
         }
 
             .btn-login:hover {
@@ -64,6 +65,12 @@
         .text-center {
             text-align: center;
         }
+
+        .create-account-link {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -86,14 +93,13 @@
             <form asp-action="Login" asp-controller="Account" method="post">
                 <div class="form-group">
                     <input type="email" asp-for="Email" class="form-control" placeholder="Email" required />
-                </div>                
-
+                </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-login btn-block">Login</button>
+                    <button type="submit" class="btn btn-login">Login</button>
                 </div>
             </form>
 
-            <p class="text-center">Don't have an account? <a href="/Account/Registration">Create a new account</a></p>
+            <a href="/Account/Registration" class="create-account-link">Don't have an account? Create a new account</a>
         </div>
     </div>
 </body>
