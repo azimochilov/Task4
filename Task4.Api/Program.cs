@@ -1,10 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Task4.Api.Extensions;
 using Task4.Data.DbContexts;
+using Task4.Service.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.AddControllersWithViews();
+builder.Services.AddJwtService(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 var app = builder.Build();

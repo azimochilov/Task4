@@ -22,8 +22,4 @@
     <ProjectReference Include="..\Task4.Service\Task4.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Account\" />
-  </ItemGroup>
-
 </Project>
