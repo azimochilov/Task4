@@ -42,4 +42,38 @@ public class AccountController : Controller
 
         return View(creationDto);
     }
+
+    // GET: Login
+    public ActionResult Login()
+    {
+        return View();
+    }
+
+    // POST: Login
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> Login(UserForResultDto dto)
+    {
+        if (ModelState.IsValid)
+        {
+            string token = await this.authenticationService.AuthenticateAsync(dto);
+
+            if (token is null)
+            {
+                ModelState.AddModelError("", "Invalid password or email.");
+                return View(dto);
+            }
+            else if (token == "b")
+            {
+                ModelState.AddModelError("", "Your account was blocked!");
+                return View(dto);
+            }
+
+            Response.Cookies.Append("Token", token);
+
+            return RedirectToAction("Index", "UserManagement");
+        }
+
+        return View(dto);
+    }
 }
