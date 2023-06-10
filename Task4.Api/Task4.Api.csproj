@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Task4.Data\Task4.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
