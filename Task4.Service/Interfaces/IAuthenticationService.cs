@@ -3,5 +3,5 @@
 namespace Task4.Service.Interfaces;
 public interface IAuthenticationService
 {
-    Task<string> AuthenticateAsync(UserForResultDto user);
+    Task<string> AuthenticateAsync(UserForResultDto dto);
 }
