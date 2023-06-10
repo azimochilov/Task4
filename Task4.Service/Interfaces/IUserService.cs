@@ -7,4 +7,6 @@ public interface IUserService
     Task<bool> DeleteAsync(long id);
     Task<UserForResultDto> BlockAsync(long id);
     Task<UserForResultDto> UnBlockAsync(long id);
+    Task<IEnumerable<UserForResultDto>> GetAllAsync();
+
 }
