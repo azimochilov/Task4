@@ -10,6 +10,7 @@ builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.AddControllersWithViews();
 builder.Services.AddJwtService(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 var app = builder.Build();
