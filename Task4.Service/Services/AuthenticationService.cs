@@ -31,7 +31,8 @@ public class AuthenticationService : IAuthenticationService
 
         if (user.Type == Status.Blocked)
             return "b";
-
+        user.LastLoginTime = DateTime.UtcNow;
+        await repository.SaveAsync();
         return GenerateToken(user);
     }
 
