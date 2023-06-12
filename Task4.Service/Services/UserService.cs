@@ -23,7 +23,7 @@ public class UserService : IUserService
         var exsistEntity = await repository.SelectAsync(x => x.Email == userForCreationDto.Email && !x.IsDeleted);
         if(exsistEntity is null)
         {
-            throw new TaskException(409, "User already exsist!");
+            return null;
         }
 
         var mapped = mapper.Map<User>(userForCreationDto);

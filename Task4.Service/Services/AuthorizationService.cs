@@ -48,12 +48,7 @@ public class AuthorizationService : IAuthorizationService
         var userId = long.Parse(claims.FirstOrDefault(c => c.Type == "Id")?.Value);
         
         var result = await this.repository.SelectAsync(u => u.Id == userId && u.Type == Status.Active);
-        bool temp = false;
-        if (result is not null)
-        {
-            temp = true;
-        }            
 
-        return temp;
+        return result is not null;
     }
 }

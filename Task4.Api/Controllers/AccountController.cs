@@ -16,11 +16,11 @@ public class AccountController : Controller
         this.configuration = configuration;
         this.authenticationService = authenticationService;
     }
-    public IActionResult Index()
-    {
-        return View();
-    }
 
+    public ActionResult Registration(UserForCreationDto creationDto)
+    {
+        return View("Registration", creationDto);
+    }
 
     // POST: Register
     [HttpPost]
@@ -34,13 +34,13 @@ public class AccountController : Controller
             if (createdUser is null)
             {
                 ModelState.AddModelError("", "This email is already used.");
-                return View(creationDto);
+                return Registration(creationDto);
             }
 
             return RedirectToAction("Login");
         }
 
-        return View(creationDto);
+        return Registration(creationDto);
     }
 
     // GET: Login
